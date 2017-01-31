@@ -1,5 +1,5 @@
 {
-  "name": "react-workshop-start",
+  "name": "react-workshop",
   "version": "1.0.0",
   "private": true,
   "description": "Starter project for React Workshop.",
@@ -10,13 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/urbancvek/react-workshop-start.git"
+    "url": "https://github.com/urbancvek/react-workshop.git"
   },
   "author": "Urban Cvek <urbancvek@cunomo.com> (http://github.com/urbancvek)",
   "dependencies": {
+    "axios": "^0.15.3",
     "core-decorators": "^0.15.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-router-dom": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
