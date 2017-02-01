@@ -2,9 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 
-import HomePage from 'ExampleReactRouter/HomePage';
-import AboutPage from 'ExampleReactRouter/AboutPage';
-import BlogPage from 'ExampleReactRouter/BlogPage';
+import { HomePage, AboutPage, BlogPage } from 'ExampleReactRouter/Pages';
 
 // Ustvari komponento MyRouter, ki bo navigirala med HomePage, AboutPage, BlogPage
 const Navbar = () => (

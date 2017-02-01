@@ -28,9 +28,7 @@ class Form extends Component {
   };
 
   handleChange({ target: { name, value } }) {
-    this.setState({
-      [name]: value.toUpperCase(),
-    });
+    this.setState({ [name]: value.toUpperCase() });
   }
 
   render() {
@@ -42,29 +40,21 @@ class Form extends Component {
           value={firstName}
           name="firstName"
           onChange={this.handleChange}
-          style={{
-            backgroundColor: firstName.length > 3 ? 'green' : 'red',
-          }}
+          style={{ backgroundColor: firstName.length > 3 ? 'green' : 'red' }}
         />
         <input
           value={email}
           name="email"
           onChange={this.handleChange}
-          style={{
-            backgroundColor: email.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ? 'green' : 'red',
-          }}
+          style={{ backgroundColor: email.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ? 'green' : 'red' }}
         />
         <input
           value={age}
           name="age"
           onChange={this.handleChange}
-          style={{
-            backgroundColor: age > 18 ? 'green' : 'red',
-          }}
+          style={{ backgroundColor: age > 18 ? 'green' : 'red' }}
         />
-        <button onClick={() => console.info(this.state)}>
-          Submit
-        </button>
+        <button onClick={() => console.info(this.state)}>Submit</button>
       </div>
     );
   }

@@ -68,9 +68,7 @@ class PokeList extends Component {
         xp: base_experience,
       };
 
-      this.setState({
-        pokemons: [...this.state.pokemons, pokemon],
-      });
+      this.setState({ pokemons: [...this.state.pokemons, pokemon] });
     } catch (error) {
       console.error(error);
     }
