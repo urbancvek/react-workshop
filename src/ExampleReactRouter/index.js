@@ -2,14 +2,34 @@
 import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 
-// Ustvari komponento MyRouter, ki bo navigirala med HomePage, AboutPage, BlogPage
+import HomePage from 'ExampleReactRouter/HomePage';
+import AboutPage from 'ExampleReactRouter/AboutPage';
+import BlogPage from 'ExampleReactRouter/BlogPage';
 
+// Ustvari komponento MyRouter, ki bo navigirala med HomePage, AboutPage, BlogPage
+const Navbar = () => (
+  <ul>
+    <li><Link to="/">Home</Link></li>
+    <li><Link to="/about">About</Link></li>
+  </ul>
+);
+
+const MyRouter = () => (
+  <BrowserRouter>
+    <div>
+      <Navbar />
+
+      <Route exact path="/" component={HomePage} />
+      <Route path="/about" component={AboutPage} />
+      <Route path="/blog/:blogTitle" component={BlogPage} />
+    </div>
+  </BrowserRouter>
+);
 
 // Ustvarjene komponente uporabi v spodnji komponenti
 const ExampleReactRouter = () => (
   <div>
-    Tukaj vstavi ustvarjeno komponento
-    {'<MyRouter />'}
+    <MyRouter />
   </div>
 );
 

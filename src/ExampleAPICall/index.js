@@ -1,5 +1,6 @@
 // @flow
-import React from 'react';
+import { autobind } from 'core-decorators';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 // Kreiraj komponento PokeList, ki bo pridobila podatke o pokemonih in ustvarila več
@@ -22,13 +23,82 @@ import axios from 'axios';
   }
 }
 */
+type PokemonType = {
+  name: string,
+  image: string,
+  weight: number,
+  xp: number,
+};
 
+const PokeDisplay = ({ pokemon }: PokeDisplayProps) => (
+  <div>
+    <h1>{pokemon.name}</h1>
+    <img src={pokemon.image} alt={pokemon.name} />
+    <li>Weight: {pokemon.weight}</li>
+    <li>XP: {pokemon.xp}</li>
+  </div>
+);
+
+type PokeDisplayProps = {
+  pokemon: PokemonType,
+};
+
+@autobind
+class PokeList extends Component {
+  props: Props;
+  state: State;
+
+  state: State = {
+    pokemons: [],
+  };
+
+  componentDidMount() {
+    this.props.pokemons.forEach(this.fetchPokemon);
+  }
+
+  async fetchPokemon(pokemonName: string) {
+    try {
+      const response = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+
+      const { name, base_experience, weight, sprites: { front_default } } = response.data;
+      const pokemon = {
+        name,
+        image: front_default,
+        weight,
+        xp: base_experience,
+      };
+
+      this.setState({
+        pokemons: [...this.state.pokemons, pokemon],
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  render() {
+    if (!this.state.pokemons) return <div>Fetching POKEmons!</div>;
+
+    return (
+      <div>
+        {this.state.pokemons.map(pokemon => <PokeDisplay key={pokemon.name} pokemon={pokemon} />)}
+      </div>
+    );
+  }
+}
+
+type Props = {
+  pokemons: Array<string>,
+};
+
+type State = {
+  pokemons: Array<PokemonType>,
+};
 
 // Ustvarjene komponente uporabi v spodnji komponenti
 const ExampleAPICall = () => (
   <div>
-    Tukaj vstavi ustvarjeno komponento
-    {'<PokeList />'}
+    <PokeList pokemons={['pikachu', 'bulbasaur', 'squirtle', 'staryu']} />
   </div>
 );
 
