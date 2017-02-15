@@ -2,10 +2,10 @@
 import { autobind } from 'core-decorators';
 import React, { Component } from 'react';
 
-// Kreiraj komponento StopWatch, ki bo merila čas v desetinkah sekunde
+// Kreiraj komponento Stopwatch, ki bo merila čas v desetinkah sekunde
 // Naj ima gumb start, ki se spremeni v pause in pa gumb reset, ki jo resetira
 @autobind
-class StopWatch extends Component {
+class Stopwatch extends Component {
   state: State;
 
   state: State = { time: 0, timing: false };
@@ -42,10 +42,10 @@ type State = {
 };
 
 // Ustvarjene komponente uporabi v spodnji komponenti
-const ExampleStopWatch = () => (
+const ExampleStopwatch = () => (
   <div>
-    <StopWatch />
+    <Stopwatch />
   </div>
 );
 
-export default ExampleStopWatch;
+export default ExampleStopwatch;
