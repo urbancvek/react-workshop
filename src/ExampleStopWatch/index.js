@@ -1,16 +1,16 @@
 // @flow
 import React from 'react';
 
-// Kreiraj komponento StopWatch, ki bo merila čas v desetinkah sekunde
+// Kreiraj komponento Stopwatch, ki bo merila čas v desetinkah sekunde
 // Naj ima gumb start, ki se spremeni v pause in pa gumb reset, ki jo resetira
 
 
 // Ustvarjene komponente uporabi v spodnji komponenti
-const ExampleStopWatch = () => (
+const ExampleStopwatch = () => (
   <div>
     Tukaj vstavi ustvarjeno komponento
-    {'<StopWatch />'}
+    {'<Stopwatch />'}
   </div>
 );
 
-export default ExampleStopWatch;
+export default ExampleStopwatch;

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import ExampleHelloWorld from 'ExampleHelloWorld';
 import ExampleClickCounter from 'ExampleClickCounter';
-import ExampleStopWatch from 'ExampleStopWatch';
+import ExampleStopwatch from 'ExampleStopwatch';
 import ExampleForm from 'ExampleForm';
 import ExampleAPICall from 'ExampleAPICall';
 import ExampleReactRouter from 'ExampleReactRouter';
