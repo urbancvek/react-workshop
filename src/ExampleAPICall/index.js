@@ -31,11 +31,13 @@ type PokemonType = {
 };
 
 const PokeDisplay = ({ pokemon }: PokeDisplayProps) => (
-  <div>
-    <h1>{pokemon.name}</h1>
+  <div style={{ display: 'flex', border: 'solid 1px black', margin: 10 }}>
     <img src={pokemon.image} alt={pokemon.name} />
-    <li>Weight: {pokemon.weight}</li>
-    <li>XP: {pokemon.xp}</li>
+    <div>
+      <h1>{pokemon.name.slice(0, 1).toUpperCase() + pokemon.name.slice(1)}</h1>
+      <p>Weight: {pokemon.weight} lbs</p>
+      <p>Experience: {pokemon.xp} XP</p>
+    </div>
   </div>
 );
 
