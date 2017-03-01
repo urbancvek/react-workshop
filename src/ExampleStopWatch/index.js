@@ -8,15 +8,41 @@ import React, { Component } from 'react';
 class Stopwatch extends Component {
   state: State;
 
-  state: State = { time: 0, timing: false };
-
-  componentDidMount() {
-    setInterval(this.updateTime, 100);
-  }
+  state: State = {
+    time: 0,
+    timer: null,
+    isRunning: false,
+  };
 
   updateTime() {
-    const { timing, time } = this.state;
-    if (timing) this.setState({ time: time + 0.1 });
+    this.setState({ time: this.state.time + 0.1 });
+  }
+
+  startButtonClicked() {
+    if (!this.state.isRunning) {
+      const timer = setInterval(this.updateTime, 100);
+
+      this.setState({
+        isRunning: true,
+        timer,
+      });
+    } else {
+      if (this.state.timer) clearInterval(this.state.timer);
+
+      this.setState({
+        isRunning: false,
+        timer: null,
+      });
+    }
+  }
+
+  resetButtonClicked() {
+    if (this.state.timer) clearInterval(this.state.timer);
+    this.setState({
+      timer: null,
+      isRunning: false,
+      time: 0,
+    });
   }
 
   render() {
@@ -25,10 +51,10 @@ class Stopwatch extends Component {
         <div>
           {this.state.time.toFixed(1)}
         </div>
-        <button onClick={() => this.setState({ timing: !this.state.timing })}>
+        <button onClick={this.startButtonClicked}>
           {this.state.timing ? 'Pause' : 'Start'}
         </button>
-        <button onClick={() => this.setState({ time: 0, timing: false })}>
+        <button onClick={this.resetButtonClicked}>
           Reset
         </button>
       </div>
@@ -38,7 +64,8 @@ class Stopwatch extends Component {
 
 type State = {
   time: number,
-  timing: boolean,
+  timer: ?any,
+  isRunning: boolean,
 };
 
 // Ustvarjene komponente uporabi v spodnji komponenti
